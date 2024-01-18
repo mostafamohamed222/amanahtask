@@ -1,0 +1,21 @@
+{
+    "hi": "hi",
+    "datapage": "Data Page",
+    "name": "Name",
+    "password": "Password",
+    "email": "Email",
+    "gender": "Gender",
+    "birthdate": "Birthdate",
+    "enter": "Enter",
+    "boy": "Male",
+    "girl": "Female",
+    "submit": "Submit",
+    "Please": "Please Enter",
+    "wrong": "is wrong",
+    "proflie": "Profile Pgae",
+    "openMap": "Go To Map",
+    "lang":"ع",
+    "newUser":"New Data",
+    "personalData":"Personal Data"
+
+}
