@@ -10,6 +10,7 @@ import '../bloc/app_event.dart';
 import '../bloc/app_state.dart';
 import '../widget/button.dart';
 import '../widget/change_lan_widget.dart';
+import '../widget/input_widget.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -87,71 +88,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      LocaleKeys.name.tr(),
-                      style: const TextStyle(
-                          color: ColorManager.blueTextColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
+                    LableInput(
+                      input: LocaleKeys.name.tr(),
                       controller: nameController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        // suffixIcon: Image.asset(LogoManager.user),
-                        filled: true,
-                        fillColor: ColorManager.textFormFieldGrey,
-                        hintText:
-                            "${LocaleKeys.enter.tr()} ${LocaleKeys.name.tr()}",
-                        hintStyle: const TextStyle(
-                          color: ColorManager.grey,
-                          fontSize: 16,
-                          fontFamily: "din",
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      validator: (value) {
+                      validate: (value) {
                         if (value == null || value.isEmpty) {
                           return '${LocaleKeys.Please.tr()} ${LocaleKeys.name.tr()}';
                         }
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      LocaleKeys.email.tr(),
-                      style: const TextStyle(
-                          color: ColorManager.blueTextColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
+                    LableInput(
+                      input: LocaleKeys.email.tr(),
                       controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        // suffixIcon: Image.asset(LogoManager.user),
-                        filled: true,
-                        fillColor: ColorManager.textFormFieldGrey,
-                        hintText:
-                            "${LocaleKeys.enter.tr()} ${LocaleKeys.email.tr()}",
-                        hintStyle: const TextStyle(
-                          color: ColorManager.grey,
-                          fontSize: 16,
-                          fontFamily: "din",
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      validator: (value) {
+                      validate: (value) {
                         if (value == null || value.isEmpty) {
                           return '${LocaleKeys.Please.tr()} ${LocaleKeys.email.tr()}';
                         }
@@ -159,52 +109,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(value);
                         if (emailValid == false) {
+                          print("the email is not caild");
                           return '${LocaleKeys.email.tr()} ${LocaleKeys.wrong.tr()}';
                         }
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      LocaleKeys.password.tr(),
-                      style: const TextStyle(
-                          color: ColorManager.blueTextColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
-                      obscureText: true,
+                    LableInput(
+                      input: LocaleKeys.password.tr(),
                       controller: passwordController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        // suffixIcon: Image.asset(LogoManager.user),
-                        filled: true,
-                        fillColor: ColorManager.textFormFieldGrey,
-                        hintText:
-                            "${LocaleKeys.enter.tr()} ${LocaleKeys.password.tr()}",
-                        hintStyle: const TextStyle(
-                          color: ColorManager.grey,
-                          fontSize: 16,
-                          fontFamily: "din",
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      validator: (value) {
+                      validate: (value) {
                         if (value == null || value.isEmpty) {
                           return '${LocaleKeys.Please.tr()} ${LocaleKeys.password.tr()}';
                         }
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
+
                     Text(
                       LocaleKeys.gender.tr(),
                       style: const TextStyle(
@@ -289,6 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ButtonWidget(
                       label: LocaleKeys.submit.tr(),
                       onTap: () async {
+                        print(nameController.text);
                         if (!formKey.currentState!.validate()) {
                           return;
                         }
