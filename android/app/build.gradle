@@ -53,7 +53,19 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+    flavorDimensions "flavor-type"
+    productFlavors {
+        prod {
+            dimension "flavor-type"
+            resValue "string", "app_name", "Producation Mode"
+        }
+        dev {
+            dimension "flavor-type"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "Test Mode"
+            versionNameSuffix ".dev"
+        }
+    }
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

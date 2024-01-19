@@ -9,7 +9,7 @@ import 'features/home_page/presentation/bloc/app_bloc.dart';
 import 'features/home_page/presentation/screens/home_screen.dart';
 import 'generated/codegen_loader.g.dart';
 
-void main() async {
+void runMain() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -43,12 +43,15 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           // useMaterial3: true,
         ),
         home: const HomeScreen(),
+        // to test flavors
+        // home: Scaffold(
+        //   appBar: AppBar(title: Text(AppConfig.shared.appName),),
+        // ),
       ),
     );
   }
